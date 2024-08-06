@@ -1,8 +1,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="LoginTests" verbose="1">
+<suite name="ActorTestSuite" verbose="1">
     <test name = "ActorPageTests">
         <classes>
-            <class name = "com.sakilaTests.AllActorsTests"/>
+            <class name = "com.sakilaTests.AllActorsTests"></class>
             <class name="com.sakilaTests.ActorByIdTests"></class>
             <class name="com.sakilaTests.AddActorTests"></class>
         </classes>
