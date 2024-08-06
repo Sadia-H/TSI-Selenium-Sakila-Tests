@@ -4,6 +4,7 @@
         <classes>
             <class name = "com.sakilaTests.AllActorsTests"/>
             <class name="com.sakilaTests.ActorByIdTests"></class>
+            <class name="com.sakilaTests.AddActorTests"></class>
         </classes>
     </test>
 </suite>
