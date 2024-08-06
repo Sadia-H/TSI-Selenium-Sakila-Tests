@@ -13,11 +13,11 @@ public class SetUpTests {
         driver = new ChromeDriver();
     }
 
-    @AfterClass
-    public void tearDown() {
-        System.out.println("*** tear down ***");
-        if (driver != null) {
-            driver.quit();
-        }
-    }
+//    @AfterClass
+//    public void tearDown() {
+//        System.out.println("*** tear down ***");
+//        if (driver != null) {
+//            driver.quit();
+//        }
+//    }
 }
