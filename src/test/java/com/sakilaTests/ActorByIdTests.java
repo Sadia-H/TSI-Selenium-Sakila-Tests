@@ -1,6 +1,7 @@
 package com.sakilaTests;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,7 +14,7 @@ import java.time.Duration;
 public class ActorByIdTests extends SetUpTests {
 
     private WebDriverWait wait;
-    private String id = "5";
+    private String id = "1";
 
     @BeforeMethod
     public void pageSetUp() {
@@ -32,8 +33,23 @@ public class ActorByIdTests extends SetUpTests {
         Assert.assertFalse(actorName.isEmpty(), "Actor name should be displayed.");
     }
 
+    @Test
+    public void testFilmLinkNavigation() {
+        WebElement firstFilmBlock = driver.findElement(By.cssSelector(".filmActorContainer .filmActorBlock"));
 
+        //get first film (in the link element) and store as filmLink
+        WebElement filmLink = firstFilmBlock.findElement(By.xpath(".."));
+        String filmPageUrl = filmLink.getAttribute("href");
 
+        //navigate to the linked page
+        filmLink.click();
+
+        wait.until(ExpectedConditions.urlContains(filmPageUrl.substring(filmPageUrl.lastIndexOf("/") + 1)));
+
+        String currentUrl = driver.getCurrentUrl();
+        Assert.assertTrue(currentUrl.contains(filmPageUrl.substring(filmPageUrl.lastIndexOf("/") + 1)),
+                "URL should contain the film ID selected");
+    }
 
 
 }
