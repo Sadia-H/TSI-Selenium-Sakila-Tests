@@ -10,16 +10,8 @@ public class SetUpTests {
 
     @BeforeSuite
     public void setup() {
-
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         driver = new ChromeDriver();
-        //driver.get("http://localhost:5173/all-actors");
-
-        try {
-            Thread.sleep(2000); //
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     @AfterSuite

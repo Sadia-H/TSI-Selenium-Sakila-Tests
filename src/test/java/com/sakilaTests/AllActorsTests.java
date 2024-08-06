@@ -4,19 +4,22 @@ import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+import java.time.Duration;
+
 public class AllActorsTests extends SetUpTests {
+
+    private WebDriverWait wait;
 
     @BeforeMethod
     public void pageSetUp() {
         driver.get("http://localhost:5173/all-actors");
-        try {
-            Thread.sleep(2000); // Wait for 2 seconds to ensure the page has loaded
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("actorContainer")));
     }
 
     @Test
@@ -34,6 +37,11 @@ public class AllActorsTests extends SetUpTests {
         int actorBlockCount = actorContainer.findElements(By.className("actorBlock")).size();
         Assert.assertTrue(actorBlockCount > 0, "There should be at least one actor block inside the actor container.");
     }
+
+//    @Test
+//    public void testActorLinkNavigation() {
+//        WebElement firstActorBlock =
+//    }
 
 
 
