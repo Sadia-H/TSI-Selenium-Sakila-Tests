@@ -19,7 +19,7 @@ public class AllActorsTests extends SetUpTests {
     public void pageSetUp() {
         driver.get("http://localhost:5173/all-actors");
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("actorContainer")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("navbarContainer")));
     }
 
     @Test
@@ -38,10 +38,21 @@ public class AllActorsTests extends SetUpTests {
         Assert.assertTrue(actorBlockCount > 0, "There should be at least one actor block inside the actor container.");
     }
 
-//    @Test
-//    public void testActorLinkNavigation() {
-//        WebElement firstActorBlock =
-//    }
+    @Test
+    public void testActorLinkNavigation() {
+        WebElement firstActorBlock = driver.findElement(By.cssSelector(".actorContainer .actorBlock"));
+        WebElement actorLink = firstActorBlock.findElement(By.xpath(".."));
+        String actorPageUrl = actorLink.getAttribute("href");
+        actorLink.click();
+
+        //url should contain 1 for first actor
+        wait.until(ExpectedConditions.urlContains(actorPageUrl.substring(actorPageUrl.lastIndexOf("/") + 1)));
+
+        String currentUrl = driver.getCurrentUrl();
+        Assert.assertTrue(currentUrl.contains(actorPageUrl.substring(actorPageUrl.lastIndexOf("/") + 1)),
+                "URL should contain the actor ID.");
+
+    }
 
 
 
