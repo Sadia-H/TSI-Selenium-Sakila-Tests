@@ -44,4 +44,18 @@ public class AddActorTests extends SetUpTests {
     }
 
 
+    @Test
+    //submitting empty forms to test for validation error messages
+    public void testAddActorErrorMessages() {
+        WebElement submitButton = driver.findElement(By.id("addActorButton"));
+        submitButton.click();
+
+        WebElement firstNameError = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("errorMessage")));
+        WebElement lastNameError = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("errorMessage")));
+
+        Assert.assertTrue(firstNameError.isDisplayed(), "First name error message should appear.");
+        Assert.assertTrue(lastNameError.isDisplayed(), "Last name error message should appear.");
+    }
+
+
 }
