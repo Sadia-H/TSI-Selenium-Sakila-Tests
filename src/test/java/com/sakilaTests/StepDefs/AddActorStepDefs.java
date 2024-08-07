@@ -2,6 +2,7 @@ package com.sakilaTests.StepDefs;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -12,6 +13,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
 import java.time.Duration;
 
@@ -35,7 +38,7 @@ public class AddActorStepDefs {
     public void tearDown() {
         System.out.println("*** tear down ***");
         if (driver != null) {
-//            driver.close();
+            driver.close();
             driver.quit();
         }
     }
@@ -58,6 +61,18 @@ public class AddActorStepDefs {
         this.lastName = lastName;
         WebElement lastNameInput = driver.findElement(By.id("lastName"));
         lastNameInput.sendKeys(lastName);
+    }
+
+    @When("the first name is empty")
+    public void theFirstNameIsEmpty() {
+        WebElement firstNameInput = driver.findElement(By.id("firstName"));
+        firstNameInput.clear();
+    }
+
+    @When("the second name is empty")
+    public void theSecondNameIsEmpty() {
+        WebElement lastNameInput = driver.findElement(By.id("lastName"));
+        lastNameInput.clear();
     }
 
     @When("(the user )clicks the Add Actor Button")
@@ -109,4 +124,18 @@ public class AddActorStepDefs {
 
 
 
+
+    @Then("the user should see and error message for first name")
+    public void theUserShouldSeeAndErrorMessageForFirstName() {
+        WebElement firstNameErrorElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='errorMessage' and contains(text(), 'Please enter the first name.')]")));
+        Assert.assertEquals(firstNameErrorElement.getText(), "Please enter the first name.",
+                "The error message for the first name should be displayed.");
+    }
+
+    @Then("should see error message for last name")
+    public void shouldSeeErrorMessageForLastName() {
+        WebElement lastNameErrorElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='errorMessage' and contains(text(), 'Please enter the last name.')]")));
+        Assert.assertEquals(lastNameErrorElement.getText(), "Please enter the last name.",
+                "The error message for the last name should be displayed.");
+    }
 }
