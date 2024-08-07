@@ -7,15 +7,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-
 
 
 import static com.sakilaTests.StepDefs.CommonStepDefs.driver;
@@ -23,43 +17,14 @@ import static com.sakilaTests.StepDefs.CommonStepDefs.wait;
 
 public class AddActorStepDefs {
 
-
-    private String actorId;
-    private String firstName;
-    private String lastName;
-
-
-//    @Before
-//    public void setUp() {
-//        System.setProperty("webdriver.chrome.driver", "src/test/java/resources/TestSuites/chromeDriver/chromedriver.exe");
-//        driver = new ChromeDriver();
-//        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//    }
-//
-//    @After
-//    public void tearDown() {
-//        System.out.println("*** tear down ***");
-//        if (driver != null) {
-//            driver.quit();
-//        }
-//    }
-
-//    @Given("the page {string} is loaded")
-//    public void thePageIsLoaded(String url) {
-//        driver.get(url);
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("navbarContainer")));
-//    }
-
     @When("the user types the first name {string}")
     public void theUserTypesTheFirstName(String firstName) {
-        this.firstName = firstName;
         WebElement firstNameInput = driver.findElement(By.id("firstName"));
         firstNameInput.sendKeys(firstName);
     }
 
     @When("(the user )types the last name {string}")
     public void typesTheLastName(String lastName) {
-        this.lastName = lastName;
         WebElement lastNameInput = driver.findElement(By.id("lastName"));
         lastNameInput.sendKeys(lastName);
     }
@@ -96,7 +61,7 @@ public class AddActorStepDefs {
         String currentUrl = driver.getCurrentUrl();
 
         //extract id from URL
-        actorId = currentUrl.substring(currentUrl.lastIndexOf('/') + 1);
+        String actorId = currentUrl.substring(currentUrl.lastIndexOf('/') + 1);
 
         Assert.assertTrue(currentUrl.contains("/actor/" + actorId),
                 "The redirection URL should contain the new actor ID.");
