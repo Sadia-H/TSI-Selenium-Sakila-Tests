@@ -18,35 +18,37 @@ import org.testng.annotations.BeforeClass;
 
 import java.time.Duration;
 
+import static com.sakilaTests.StepDefs.CommonStepDefs.driver;
+
 public class AddActorStepDefs {
 
-    private WebDriver driver;
+//    private WebDriver driver;
     private WebDriverWait wait;
     private String actorId;
     private String firstName;
     private String lastName;
 
 
-    @Before
-    public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "src/test/java/resources/TestSuites/chromeDriver/chromedriver.exe");
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    }
+//    @Before
+//    public void setUp() {
+//        System.setProperty("webdriver.chrome.driver", "src/test/java/resources/TestSuites/chromeDriver/chromedriver.exe");
+//        driver = new ChromeDriver();
+//        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//    }
+//
+//    @After
+//    public void tearDown() {
+//        System.out.println("*** tear down ***");
+//        if (driver != null) {
+//            driver.quit();
+//        }
+//    }
 
-    @After
-    public void tearDown() {
-        System.out.println("*** tear down ***");
-        if (driver != null) {
-            driver.quit();
-        }
-    }
-
-    @Given("the page {string} is loaded")
-    public void thePageIsLoaded(String url) {
-        driver.get(url);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("navbarContainer")));
-    }
+//    @Given("the page {string} is loaded")
+//    public void thePageIsLoaded(String url) {
+//        driver.get(url);
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("navbarContainer")));
+//    }
 
     @When("the user types the first name {string}")
     public void theUserTypesTheFirstName(String firstName) {
