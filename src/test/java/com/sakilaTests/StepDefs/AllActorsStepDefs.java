@@ -19,30 +19,6 @@ import static com.sakilaTests.StepDefs.CommonStepDefs.wait;
 
 public class AllActorsStepDefs {
 
-//    private WebDriver driver;
-//    private WebDriverWait wait;
-
-//    @Before
-//    public void setUp() {
-//        System.setProperty("webdriver.chrome.driver", "src/test/java/resources/TestSuites/chromeDriver/chromedriver.exe");
-//        driver = new ChromeDriver();
-//        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//    }
-//
-//    @After
-//    public void tearDown() {
-//        System.out.println("*** tear down ***");
-//        if (driver != null) {
-//            driver.close();
-//            driver.quit();
-//        }
-//    }
-
-//    @Given("the page {string} is loaded")
-//    public void thePageIsLoaded(String url) {
-//        driver.get(url);
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("navbarContainer")));
-//    }
 
     @Then("all actors should be listed on the page")
     public void allActorsShouldBeListedOnThePage() {
