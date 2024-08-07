@@ -16,14 +16,14 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
-import java.time.Duration;
+
 
 import static com.sakilaTests.StepDefs.CommonStepDefs.driver;
+import static com.sakilaTests.StepDefs.CommonStepDefs.wait;
 
 public class AddActorStepDefs {
 
-//    private WebDriver driver;
-    private WebDriverWait wait;
+
     private String actorId;
     private String firstName;
     private String lastName;

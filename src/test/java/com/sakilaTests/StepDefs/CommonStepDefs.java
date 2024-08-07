@@ -16,13 +16,13 @@ import java.time.Duration;
 public class CommonStepDefs {
 
     public static WebDriver driver;
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
+    public static WebDriverWait wait;
 
     @BeforeAll
     public static void setUp() {
         System.setProperty("webdriver.chrome.driver", "src/test/java/resources/TestSuites/chromeDriver/chromedriver.exe");
         driver = new ChromeDriver();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     @AfterAll
