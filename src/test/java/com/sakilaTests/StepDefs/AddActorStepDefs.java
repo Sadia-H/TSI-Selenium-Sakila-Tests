@@ -38,7 +38,6 @@ public class AddActorStepDefs {
     public void tearDown() {
         System.out.println("*** tear down ***");
         if (driver != null) {
-            driver.close();
             driver.quit();
         }
     }
