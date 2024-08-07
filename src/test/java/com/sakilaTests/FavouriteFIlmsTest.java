@@ -41,4 +41,6 @@ public class FavouriteFIlmsTest extends SetUpTests{
         Assert.assertTrue(favouriteFilms.size() > 0, "Favorite films should be displayed after liking.");
     }
 
+    //test when no films are favourited
+
 }
