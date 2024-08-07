@@ -5,6 +5,7 @@ Feature: Add Actor
     When the user types the first name "Sam"
     And types the last name "Doe"
     And clicks the Add Actor Button
-    Then the user should see a "Added Actor!" message
-    And should be redirected to the actor's page
+    Then the user should see a "Actor added!" message
+    And should be redirected to the actor page
+    And should see the actor "Sam" "Doe" on the actor's page
     And should see the actor "Sam Doe" in the actors list
