@@ -38,7 +38,7 @@ public class FavouriteFIlmsTest extends SetUpTests{
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("pageContainer")));
 
         List<WebElement> favouriteFilms = driver.findElements(By.className("filmActorBlock"));
-        Assert.assertTrue(favouriteFilms.size() > 0, "Favorite films should be displayed after liking.");
+        Assert.assertFalse(favouriteFilms.isEmpty(), "Favorite films should be displayed after liking.");
     }
 
 
